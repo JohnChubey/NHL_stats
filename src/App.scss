@@ -1,0 +1,8 @@
+/*.App {*/
+/*  margin: 5vh 15vw 0 15vw;*/
+/*}*/
+
+#Team-card-layout-div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
