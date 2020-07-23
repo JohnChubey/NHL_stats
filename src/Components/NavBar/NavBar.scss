@@ -1,12 +1,41 @@
 #NavBar {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: 'title . . links .';
+    background-color: #000000;
+    color: white;
 }
 
 #title {
-    background-color: red;
+    margin-left: 3em;
+    grid-area: title;
 }
 
 #links-div {
-    background-color: green;
+    grid-area: links;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.NavBarLink {
+    color: white;
+    text-decoration: None;
+    height: 100%;
+}
+
+.NavBarLinkButton {
+    height: 100%;
+    background-color: transparent;
+    color: #D1D1D1;
+    border: None;
+    font-size: 1rem;
+    &:focus {
+        outline: None;
+    }
+    &:hover {
+        cursor: pointer;
+        color: #FFFFFF;
+    }
 }
