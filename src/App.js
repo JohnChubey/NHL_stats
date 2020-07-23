@@ -1,41 +1,28 @@
 import React, {useState, useEffect} from 'react';
-import {BASE_API} from "./Extras/Constants";
-import {TeamCard} from "./Components/TeamCard/TeamCard";
-import {NavBar} from "./Components/NavBar/NavBar";
+import {useRoutes} from 'hookrouter';
 import './App.scss';
+import {NavBar} from "./Components/NavBar/NavBar";
+import {Teams} from "./Components/Teams/Teams";
+import {Home} from "./Components/Home/Home";
+import {Players} from "./Components/Players/Players";
+
+const routes = {
+    '/': () => <Home />,
+    '/teams': () => <Teams />,
+    '/players': () => <Players />,
+  };
 
 const App = () => {
-  const [searchbarInput, setSearchbarInput] = useState('');
-
-  const [teams, setTeams] = useState([]);
-  const [filteredTeams, setFilteredTeams] = useState(teams);
-  useEffect( () => {
-    fetch(BASE_API + 'teams?expand=team.stats')
-      .then(results => results.json())
-      .then(res => {
-        setTeams(res.teams);
-      });
-  }, []);
 
   useEffect(() => {
-      setFilteredTeams(teams.filter(team => team.name.toLowerCase().includes(searchbarInput.toLowerCase())));
-    }, [teams, searchbarInput]);
+    document.title = 'NHL Stats'
+  }, []);
 
-  function handleSearchbarChange(e){
-    setSearchbarInput(e.target.value);
-  }
-
+  const match = useRoutes(routes);
   return (
     <div className="App">
       <NavBar />
-      <label htmlFor="searchbar">Search Teams: </label>
-      <input id={'searchbar'} value={searchbarInput} type="text" placeholder={'Search for teams here'}
-             onChange={handleSearchbarChange}/>
-      <div id={'Team-card-layout-div'}>
-        {filteredTeams.map((team, index) => {
-          return <TeamCard index={index} key={team.id} team={team}/>
-        })}
-      </div>
+      {match || <div><h2>404 Error: Page not found</h2></div>}
     </div>
   );
 };

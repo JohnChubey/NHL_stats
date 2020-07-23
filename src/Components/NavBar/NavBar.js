@@ -6,12 +6,12 @@ const NavBar = () => {
   return (
     <div id="NavBar">
       <div id={'title'}>
-        <h1>NHL Stats</h1>
+        <A className={'NavBarLink'} href={'/'}><h1>NHL Stats</h1></A>
       </div>
       <div id={'links-div'}>
-        <A href={'/'}>Home</A>
-        <A href={'/teams'}>Teams</A>
-        <A href={'/players'}>Players</A>
+        <A className={'NavBarLink'} href={'/'}><button className='NavBarLinkButton'>Home</button></A>
+        <A className={'NavBarLink'} href={'/teams'}><button className='NavBarLinkButton'>Teams</button></A>
+        <A className={'NavBarLink'} href={'/players'}><button className='NavBarLinkButton'>Players</button></A>
       </div>
     </div>
   );
