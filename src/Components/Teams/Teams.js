@@ -25,8 +25,7 @@ const Teams = () => {
 
   return (
     <div className="Teams">
-      <label htmlFor="searchbar">Search Teams: </label>
-      <input id={'searchbar'} value={searchbarInput} type="text" placeholder={'Search for teams here'}
+      <input id={'Teams-searchbar'} value={searchbarInput} type="text" placeholder={'Search teams'}
              onChange={handleSearchbarChange}/>
       <div id={'Team-card-layout-div'}>
         {filteredTeams.map((team, index) => {
