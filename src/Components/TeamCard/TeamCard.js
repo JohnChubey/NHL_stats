@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './TeamCard.scss';
+import {BASE_LOGO_API} from "../../Extras/Constants";
 
 const TeamCard = (props) => {
   const [focused, setFocused] = useState(false);
@@ -36,10 +37,10 @@ const TeamCard = (props) => {
     <a onClick={() => setFocused(!focused)}>
       <div className="TeamCard">
         <div>
-
         </div>
-        <div>
-          <h3>{props.team.name}</h3>
+        <div className={'TeamCard-title-div'}>
+          <img className={'Team-logo-img'} src={BASE_LOGO_API + props.team.id + '.svg'}/>
+          <h3 className={'Team-name'}>{props.team.name}</h3>
         </div>
         {getExtraInfo()}
       </div>

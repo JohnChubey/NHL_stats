@@ -11,5 +11,20 @@
 
 }
 
-.TeamCard-extra-info-div{
+.TeamCard-extra-info-div {
+}
+
+.TeamCard-title-div {
+    display: flex;
+    align-items: center;
+}
+
+.Team-logo-img {
+    flex: 1;
+    height: 100px;
+    width: 100px;
+}
+
+.Team-name {
+    flex:3;
 }

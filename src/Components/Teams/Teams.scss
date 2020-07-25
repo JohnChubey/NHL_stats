@@ -1,5 +1,17 @@
-
 #Team-card-layout-div {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+#Teams-searchbar {
+  height: 2em;
+  margin: 1em 1em 0.1em 1em;
+  width: 25%;
+  border: None;
+  border-bottom: 0.1em solid #000000;
+  //background-color: red;
+  font-size: 1rem;
+  &:focus {
+    outline: None;
+  }
 }
