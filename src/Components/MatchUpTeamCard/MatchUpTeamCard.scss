@@ -1,0 +1,37 @@
+$HomeAwaySpacing: 0.1em;
+$HomeAwayFontSize: 1.5rem;
+$HomeAwayFontWeight: 600;
+
+.MatchUpTeamCard-team-name {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.MatchUpTeamCard-team-record {
+  text-align: center;
+}
+
+.MatchUpTeamCard-Home {
+  text-align: left;
+  margin:0 0 0 $HomeAwaySpacing;
+  font-size: $HomeAwayFontSize;
+  font-weight: $HomeAwayFontWeight;
+}
+
+.MatchUpTeamCard-Away {
+  text-align: right;
+  margin:0 $HomeAwaySpacing 0 0;
+  font-size: $HomeAwayFontSize;
+  font-weight: $HomeAwayFontWeight;
+}
+
+.MatchUpTeamCard-team-name {
+  font-size: 1.2rem;
+}
+
+.MatchUpTeamCard-team-record {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+
