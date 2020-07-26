@@ -1,0 +1,14 @@
+.MatchUp {
+  border: 0.2em solid #000000;
+  padding: 1em 1em 1em 1em;
+  margin: 0.5em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.MatchUp-score-div {
+  display: None;
+}
+.MatchUp-series-div {
+  display: None;
+}

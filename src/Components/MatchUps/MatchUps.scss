@@ -1,0 +1,8 @@
+.Matchups-dates-div {
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.Matchups-games-div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
