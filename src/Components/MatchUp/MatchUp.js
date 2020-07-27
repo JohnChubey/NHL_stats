@@ -1,23 +1,35 @@
 import React, {useState, useEffect} from 'react';
 import './MatchUp.scss';
 import {AWAY, BASE_LOGO_API, HOME} from "../../Extras/Constants";
-import {MatchUpTeamCard} from "../MatchUpTeamCard/MatchUpTeamCard";
 import moment from 'moment';
 
 const MatchUp = (props) => {
   return (
     <div className="MatchUp">
-      <MatchUpTeamCard homeOrAway={HOME} team={props.game.teams.home} />
+      <div className="HomeMatchUp">
+        <p className='lala'>Home</p>
+        <img className={'MatchUp-logo'} src={BASE_LOGO_API + props.game.teams.home.team.id + '.svg'} alt=""/>
+        <p className={'MatchUp-team-name'}>{props.game.teams.home.team.name}</p>
+        <p className={'MatchUp-team-record'}>{props.game.teams.home.leagueRecord.wins}-{props.game.teams.home.leagueRecord.losses}</p>
+      </div>
       <div className={'MatchUp-score-div'}>
         <p>Score</p>
       </div>
       <div className={'MatchUp-series-div'}>
         <p>Series</p>
       </div>
-      <MatchUpTeamCard homeOrAway={AWAY} team={props.game.teams.away} />
+      <div className="AwayMatchUp">
+        <p className={'lala'}>Away</p>
+        <img className={'MatchUp-logo'} src={BASE_LOGO_API + props.game.teams.away.team.id + '.svg'} alt=""/>
+        <p className={'MatchUp-team-name'}>{props.game.teams.away.team.name}</p>
+        <p className={'MatchUp-team-record'}>{props.game.teams.away.leagueRecord.wins}-{props.game.teams.away.leagueRecord.losses}</p>
+      </div>
       <div className={'MatchUp-extra-info-div'}>
         <p>{props.game.venue.name} @ {moment(props.game.gameDate).format('h:mm A')}</p>
       </div>
+      {/*<div className={'vs-div'}>*/}
+      {/*  <p className={'vs-text'}>vs</p>*/}
+      {/*</div>*/}
     </div>
   );
 };
