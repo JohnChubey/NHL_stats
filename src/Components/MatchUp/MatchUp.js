@@ -27,9 +27,9 @@ const MatchUp = (props) => {
       <div className={'MatchUp-extra-info-div'}>
         <p>{props.game.venue.name} @ {moment(props.game.gameDate).format('h:mm A')}</p>
       </div>
-      {/*<div className={'vs-div'}>*/}
-      {/*  <p className={'vs-text'}>vs</p>*/}
-      {/*</div>*/}
+      <div className={'vs-div'}>
+        <p className={'vs-text'}>vs</p>
+      </div>
     </div>
   );
 };
