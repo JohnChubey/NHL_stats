@@ -7,7 +7,7 @@ const MatchUp = (props) => {
   return (
     <div className="MatchUp">
       <div className="HomeMatchUp">
-        <p className='lala'>Home</p>
+        <p className='MatchUp-Home-Text'>Home</p>
         <img className={'MatchUp-logo'} src={BASE_LOGO_API + props.game.teams.home.team.id + '.svg'} alt=""/>
         <p className={'MatchUp-team-name'}>{props.game.teams.home.team.name}</p>
         <p className={'MatchUp-team-record'}>{props.game.teams.home.leagueRecord.wins}-{props.game.teams.home.leagueRecord.losses}</p>
@@ -19,7 +19,7 @@ const MatchUp = (props) => {
         <p>Series</p>
       </div>
       <div className="AwayMatchUp">
-        <p className={'lala'}>Away</p>
+        <p className={'MatchUp-Away-Text'}>Away</p>
         <img className={'MatchUp-logo'} src={BASE_LOGO_API + props.game.teams.away.team.id + '.svg'} alt=""/>
         <p className={'MatchUp-team-name'}>{props.game.teams.away.team.name}</p>
         <p className={'MatchUp-team-record'}>{props.game.teams.away.leagueRecord.wins}-{props.game.teams.away.leagueRecord.losses}</p>
