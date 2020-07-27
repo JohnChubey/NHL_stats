@@ -1,11 +1,18 @@
 .MatchUp {
   border: 0.15em solid #000000;
-  //box-shadow: 0.1em -0.1em 0.3em #000000;
   box-shadow: -0.1em 0.1em 0.3em #000000;
   padding: 1em 1em 1em 1em;
   margin: 0.5em;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.MatchUp-extra-info-div {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  p {
+    text-align: center;
+  }
 }
 
 .MatchUp-score-div {

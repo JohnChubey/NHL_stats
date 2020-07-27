@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './MatchUp.scss';
 import {AWAY, BASE_LOGO_API, HOME} from "../../Extras/Constants";
 import {MatchUpTeamCard} from "../MatchUpTeamCard/MatchUpTeamCard";
+import moment from 'moment';
 
 const MatchUp = (props) => {
   return (
@@ -14,6 +15,9 @@ const MatchUp = (props) => {
         <p>Series</p>
       </div>
       <MatchUpTeamCard homeOrAway={AWAY} team={props.game.teams.away} />
+      <div className={'MatchUp-extra-info-div'}>
+        <p>{props.game.venue.name} @ {moment(props.game.gameDate).format('h:mm A')}</p>
+      </div>
     </div>
   );
 };
