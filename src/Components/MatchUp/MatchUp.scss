@@ -1,0 +1,146 @@
+$HomeAwaySpacing: 0.1em;
+$HomeAwayFontSize: 1.5rem;
+$HomeAwayFontSizeSmall: 1rem;
+$HomeAwayFontWeight: 600;
+
+
+.MatchUp {
+  border: 0.15em solid #000000;
+  box-shadow: -0.1em 0.1em 0.3em #000000;
+  padding: 1em 1em 1em 1em;
+  margin: 0.5em;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas: "HomeMatchUp HomeMatchUp HomeMatchUp AwayMatchUp AwayMatchUp AwayMatchUp"
+                       "HomeMatchUp HomeMatchUp HomeMatchUp AwayMatchUp AwayMatchUp AwayMatchUp"
+                       "HomeMatchUp HomeMatchUp HomeMatchUp AwayMatchUp AwayMatchUp AwayMatchUp"
+                       "HomeMatchUp HomeMatchUp HomeMatchUp AwayMatchUp AwayMatchUp AwayMatchUp"
+                       "HomeMatchUp HomeMatchUp HomeMatchUp AwayMatchUp AwayMatchUp AwayMatchUp"
+                       "MatchUpExtraInfo MatchUpExtraInfo MatchUpExtraInfo MatchUpExtraInfo MatchUpExtraInfo MatchUpExtraInfo";
+  background-color: #FFFFFF;
+}
+
+.MatchUp-extra-info-div {
+  grid-area: MatchUpExtraInfo;
+  p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 1em 0 0 0;
+  }
+}
+
+.HomeMatchUp {
+  grid-area: HomeMatchUp;
+}
+
+.AwayMatchUp {
+  grid-area: AwayMatchUp;
+}
+
+.vs-div {
+  grid-column: 3/5;
+  grid-row: 3;
+  align-self: end;
+  background-color: transparent;
+}
+
+.vs-text {
+  margin: 0;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.MatchUp-score-div {
+  display: None;
+}
+.MatchUp-series-div {
+  display: None;
+}
+
+.MatchUp-team-name {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.MatchUp-team-record {
+  text-align: center;
+}
+
+.MatchUp-Home-Text {
+  text-align: left;
+  margin:0 0 0 $HomeAwaySpacing;
+  font-size: $HomeAwayFontSize;
+  font-weight: $HomeAwayFontWeight;
+}
+
+.MatchUp-Away-Text {
+  text-align: right;
+  margin:0 $HomeAwaySpacing 0 0;
+  font-size: $HomeAwayFontSize;
+  font-weight: $HomeAwayFontWeight;
+}
+
+.MatchUp-team-name {
+  font-size: 1.2rem;
+}
+
+.MatchUp-team-record {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.MatchUp-logo-div {
+  display: grid;
+  justify-items: center;
+}
+
+
+@media screen and (max-width: 675px) {
+  .MatchUp-team-name {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .MatchUp-team-record {
+    display: None;
+  }
+
+  .MatchUp-Home-Text {
+    text-align: left;
+    margin: 0 0 0 $HomeAwaySpacing;
+    font-size: $HomeAwayFontSizeSmall;
+  }
+
+  .MatchUp-Away-Text {
+    text-align: right;
+    margin: 0 $HomeAwaySpacing 0 0;
+    font-size: $HomeAwayFontSizeSmall;
+  }
+
+  .vs-text {
+    font-size: 1.4rem;
+  }
+
+  .MatchUp-extra-info-div {
+    p {
+      font-size: 1rem;
+      margin-top: 0.4em;
+    }
+  }
+
+  .MatchUp {
+    height: 9em;
+  }
+
+  .MatchUp-logo {
+    height: 5em;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .MatchUp-logo {
+    height: 3.5em;
+  }
+}
+
