@@ -21,7 +21,7 @@ const MatchUps = (props) => {
     if(games && games.dates) {
       return games.dates.map((date, index) => {
         return <div className={'Matchups-dates-div'} key={index}>
-          <h2>Match-ups for {moment(date.date).format("MMMM Do, YYYY")}:</h2>
+          <h2>Games on {moment(date.date).format("MMMM Do, YYYY")}:</h2>
           <div className={'Matchups-games-div'}>
             {date.games.map((game, index) => {
               return <MatchUp key={game.gamePk} game={game}/>

@@ -1,5 +1,6 @@
 $HomeAwaySpacing: 0.1em;
 $HomeAwayFontSize: 1.5rem;
+$HomeAwayFontSizeSmall: 1rem;
 $HomeAwayFontWeight: 600;
 
 
@@ -24,6 +25,8 @@ $HomeAwayFontWeight: 600;
   grid-area: MatchUpExtraInfo;
   p {
     text-align: center;
+    font-size: 1.2rem;
+    margin: 1em 0 0 0;
   }
 }
 
@@ -87,4 +90,57 @@ $HomeAwayFontWeight: 600;
   margin: 0;
 }
 
+.MatchUp-logo-div {
+  display: grid;
+  justify-items: center;
+}
+
+
+@media screen and (max-width: 675px) {
+  .MatchUp-team-name {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .MatchUp-team-record {
+    display: None;
+  }
+
+  .MatchUp-Home-Text {
+    text-align: left;
+    margin: 0 0 0 $HomeAwaySpacing;
+    font-size: $HomeAwayFontSizeSmall;
+  }
+
+  .MatchUp-Away-Text {
+    text-align: right;
+    margin: 0 $HomeAwaySpacing 0 0;
+    font-size: $HomeAwayFontSizeSmall;
+  }
+
+  .vs-text {
+    font-size: 1.4rem;
+  }
+
+  .MatchUp-extra-info-div {
+    p {
+      font-size: 1rem;
+      margin-top: 0.4em;
+    }
+  }
+
+  .MatchUp {
+    height: 9em;
+  }
+
+  .MatchUp-logo {
+    height: 5em;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .MatchUp-logo {
+    height: 3.5em;
+  }
+}
 
