@@ -47,8 +47,6 @@ const MatchUps = (props) => {
   function handleWeekLoad(e){
     let bottom = e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop === e.target.documentElement.clientHeight;
     if(bottom && numberOfSearchIterations < 6){
-      let numIterations = numberOfSearchIterations;
-      debugger;
       setNumberOfSearchIterations(numberOfSearchIterations + 1);
     }
   }
