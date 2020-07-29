@@ -21,7 +21,7 @@ const MatchUps = (props) => {
   useEffect(() => {
     window.addEventListener("scroll", handleWeekLoad);
     return () => window.removeEventListener("scroll", handleWeekLoad);
-  }, []);
+  }, [numberOfSearchIterations]);
 
   function getEndDate() {
     return endDate.add(numberOfSearchIterations * 3, 'd').format('YYYY-MM-DD')
