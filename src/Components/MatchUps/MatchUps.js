@@ -6,7 +6,7 @@ import moment from 'moment';
 
 const MatchUps = (props) => {
   const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
-  const [endDate, setEndDate] = useState(moment().startOf('week'));
+  const [endDate, setEndDate] = useState(moment());
   const [numberOfSearchIterations, setNumberOfSearchIterations] = useState(1);
   const [games, setGames] = useState([]);
 
