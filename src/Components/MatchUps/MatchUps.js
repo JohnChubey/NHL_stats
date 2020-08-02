@@ -51,9 +51,18 @@ const MatchUps = (props) => {
     }
   }
 
+  function scrollToTop(){
+    window.scrollTo({top:0, behavior:"smooth"})
+  }
+
+  function getBackToTopButton(){
+    return <button id={'Matchups-back-to-top-button'} onClick={scrollToTop}>Back to Top</button>
+  }
+
   return (
     <div className="MatchUps">
       {getMatchups()}
+      {getBackToTopButton()}
     </div>
   );
 };
