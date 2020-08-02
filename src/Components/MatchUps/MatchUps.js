@@ -3,6 +3,7 @@ import './MatchUps.scss';
 import {BASE_API} from "../../Extras/Constants";
 import {MatchUp} from "../MatchUp/MatchUp";
 import moment from 'moment';
+import {ScrollToTopButton} from "../ScrollToTopButton/ScrollToTopButton";
 
 const MatchUps = (props) => {
   const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
@@ -56,7 +57,7 @@ const MatchUps = (props) => {
   }
 
   function getBackToTopButton(){
-    return <button id={'Matchups-back-to-top-button'} onClick={scrollToTop}>Back to Top</button>
+    return <ScrollToTopButton />
   }
 
   return (
