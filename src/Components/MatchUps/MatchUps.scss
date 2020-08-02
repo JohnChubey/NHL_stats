@@ -18,3 +18,16 @@
     grid-template-columns: 1fr;
   }
 }
+
+.MatchUps-load-more-div {
+  display: grid;
+  justify-items: center;
+}
+
+.MatchUps-load-more {
+  width: 50em;
+  height: 3em;
+  font-size: 1.2rem;
+  margin-bottom: 0.8em;
+
+}
