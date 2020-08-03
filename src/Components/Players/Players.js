@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import './Players.scss';
-import {BASE_LOCAL_API} from "../../Extras/Constants";
+import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
 
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
+  const [filteredPlayers, setFilteredPlayers] = useState(null);
+  const [filter, setFilter] = useState(SKATERS);
   useEffect( () => {
     fetch(BASE_LOCAL_API + '/players')
       .then(results => results.json())
@@ -12,8 +14,26 @@ const Players = () => {
       });
   }, []);
 
+  useEffect( () => {
+    filterPlayers();
+  }, [allPlayers, filter]);
+
+  function filterPlayers() {
+    if (allPlayers) {
+      if (filter === SKATERS) {
+        setFilteredPlayers(allPlayers.filter(player => {
+          return player.position.code.toLowerCase() !== GOALIE;
+        }));
+      } else {
+        setFilteredPlayers(allPlayers.filter(player => {
+          return player.position.code.toLowerCase() === GOALIE;
+        }))
+      }
+    }
+  }
+
   function getPlayerTable(){
-    if(allPlayers === null){
+    if(filteredPlayers === null){
       return <p>Loading...</p>
     } else {
       return <div id={'PlayerStatsTable-div'}>
@@ -42,7 +62,7 @@ const Players = () => {
             <th>PPTOI</th>
             <th>GWG</th>
           </tr>
-          {allPlayers.map((player, index) => {
+          {filteredPlayers.map((player, index) => {
             return <tr>
               <td>{index + 1}</td>
               <td>{player.player.fullName}</td>
@@ -73,8 +93,18 @@ const Players = () => {
     }
   }
 
+  function handlePlayerFilterChange(e){
+    setFilter(e.target.value);
+  }
+
   return (
     <div className="Players">
+      <div>
+        <select name="player-type" id="player-type-dropdown" onChange={handlePlayerFilterChange}>
+          <option value={SKATERS}>Skaters</option>
+          <option value={GOALIES}>Goalies</option>
+        </select>
+      </div>
       {getPlayerTable()}
     </div>
   );
