@@ -1,21 +1,29 @@
 .Players {
   background-color: #FAF9F9;
+  display: grid;
+  grid-template-columns: 1fr 13fr 1fr;
+  grid-template-areas: '. PlayerStatsTable .';
 }
 
 #PlayerStatsTable {
   margin: 2em;
+  border-spacing: unset;
 }
 
 #PlayerStatsTable-div {
-  overflow-y: scroll;
-  //width: 90em;
-  height: 40em;
-  background-color: #FFFFFF;
+  grid-area: PlayerStatsTable;
+  overflow-y: hidden;
+  height: 48em;
+  background-color: #FAF9F9;;
+  margin-top: 1em;
   th {
     padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #0A026E;
+    color: #FFFFFF;
+    cursor: pointer;
   }
   td {
     text-align: center;
-    padding: 0.25em 0 0.25em 0;
+    padding: 0.5em 0 0.5em 0;
   }
 }

@@ -18,7 +18,8 @@ const Players = () => {
     } else {
       return <div id={'PlayerStatsTable-div'}>
         <table id={'PlayerStatsTable'}>
-          <tr>
+          <tr id={'PlayerStatsTable-headers'}>
+            <th>Ranking</th>
             <th>Player Name</th>
             <th>Position</th>
             <th>Games Played</th>
@@ -39,9 +40,11 @@ const Players = () => {
             <th>PPG</th>
             <th>PPP</th>
             <th>PPTOI</th>
+            <th>GWG</th>
           </tr>
-          {allPlayers.map(player => {
+          {allPlayers.map((player, index) => {
             return <tr>
+              <td>{index + 1}</td>
               <td>{player.player.fullName}</td>
               <td>{player.position.abbreviation}</td>
               <td>{player.stats.games}</td>
@@ -62,6 +65,7 @@ const Players = () => {
               <td>{player.stats.powerPlayGoals}</td>
               <td>{player.stats.powerPlayPoints}</td>
               <td>{player.stats.powerPlayTimeOnIcePerGame}</td>
+              <td>{player.stats.gameWinningGoals}</td>
             </tr>
           })}
         </table>
