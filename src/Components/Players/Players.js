@@ -21,14 +21,6 @@ const Players = () => {
     filterPlayers();
   }, [allPlayers, filter]);
 
-  // useEffect( () => {
-  //   debugger;
-  //   let players = filteredPlayers;
-  //   if (filteredPlayers){
-  //     setDisplayedPlayers(filteredPlayers.slice(playerIndexStart, playerIndexStart + 20));
-  //   }
-  // }, [filteredPlayers]);
-
   function filterPlayers() {
     if (allPlayers) {
       if (filter === SKATERS) {
