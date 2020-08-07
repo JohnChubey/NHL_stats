@@ -6,6 +6,7 @@ import {Paginator} from "../Paginator/Paginator";
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
   const [filteredPlayers, setFilteredPlayers] = useState(null);
+  const [displayedPlayers, setDisplayedPlayers] = useState(null);
   const [filter, setFilter] = useState(SKATERS);
   useEffect( () => {
     fetch(BASE_LOCAL_API + '/players')
@@ -33,8 +34,14 @@ const Players = () => {
     }
   }
 
+  const [playerIndexStart, setPlayerIndexStart] = useState(0);
+  function setDisplayedData(indexStart, indexEnd, players){
+    setPlayerIndexStart(indexStart);
+    setDisplayedPlayers(players);
+  }
+
   function getPlayerTable(){
-    if(filteredPlayers === null){
+    if(displayedPlayers === null){
       return <p>Loading...</p>
     } else {
       return <div id={'PlayerStatsTable-div'}>
@@ -63,9 +70,9 @@ const Players = () => {
             <th>PPTOI</th>
             <th>GWG</th>
           </tr>
-          {filteredPlayers.map((player, index) => {
+          {displayedPlayers.map((player, index) => {
             return <tr>
-              <td>{index + 1}</td>
+              <td>{playerIndexStart + index + 1}</td>
               <td>{player.player.fullName}</td>
               <td>{player.position.abbreviation}</td>
               <td>{player.stats.games}</td>
@@ -108,7 +115,7 @@ const Players = () => {
       </div>
       {getPlayerTable()}
       <div id={'Players-pagination'}>
-        <Paginator data={filteredPlayers} dataPerPage={20} />
+        <Paginator data={filteredPlayers} setDisplayedData={setDisplayedData} dataPerPage={20} />
       </div>
     </div>
   );

@@ -11,6 +11,15 @@ const Paginator = (props) => {
     }
   }, [props.data]);
 
+  useEffect(() => {
+    if (props.data) {
+      let indexStart = props.dataPerPage * (currentPageNumber - 1);
+      let indexEnd = indexStart + props.dataPerPage;
+      let displayedData = props.data.slice(indexStart, indexEnd);
+      props.setDisplayedData(indexStart, indexEnd, displayedData);
+    }
+  }, [currentPageNumber]);
+
   function handlePreviousClick() {
     if(currentPageNumber > 1){
       setCurrentPageNumber(currentPageNumber - 1);
