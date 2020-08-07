@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './Players.scss';
 import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
+import {Paginator} from "../Paginator/Paginator";
 
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
@@ -99,13 +100,16 @@ const Players = () => {
 
   return (
     <div className="Players">
-      <div>
+      <div id={'Players-type-dropdown-div'}>
         <select name="player-type" id="player-type-dropdown" onChange={handlePlayerFilterChange}>
           <option value={SKATERS}>Skaters</option>
           <option value={GOALIES}>Goalies</option>
         </select>
       </div>
       {getPlayerTable()}
+      <div id={'Players-pagination'}>
+        <Paginator data={filteredPlayers} dataPerPage={20} />
+      </div>
     </div>
   );
 };
