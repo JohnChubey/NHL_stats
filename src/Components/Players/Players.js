@@ -7,6 +7,7 @@ const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
   const [filteredPlayers, setFilteredPlayers] = useState(null);
   const [displayedPlayers, setDisplayedPlayers] = useState(null);
+  const [playerIndexStart, setPlayerIndexStart] = useState(0);
   const [filter, setFilter] = useState(SKATERS);
   useEffect( () => {
     fetch(BASE_LOCAL_API + '/players')
@@ -20,21 +21,32 @@ const Players = () => {
     filterPlayers();
   }, [allPlayers, filter]);
 
+  // useEffect( () => {
+  //   debugger;
+  //   let players = filteredPlayers;
+  //   if (filteredPlayers){
+  //     setDisplayedPlayers(filteredPlayers.slice(playerIndexStart, playerIndexStart + 20));
+  //   }
+  // }, [filteredPlayers]);
+
   function filterPlayers() {
     if (allPlayers) {
       if (filter === SKATERS) {
-        setFilteredPlayers(allPlayers.filter(player => {
+        let filtered = allPlayers.filter(player => {
           return player.position.code.toLowerCase() !== GOALIE;
-        }));
+        });
+        setFilteredPlayers(filtered);
+        setDisplayedPlayers(filtered.slice(0, 20));
       } else {
-        setFilteredPlayers(allPlayers.filter(player => {
+        let filtered = allPlayers.filter(player => {
           return player.position.code.toLowerCase() === GOALIE;
-        }))
+        });
+        setFilteredPlayers(filtered);
+        setDisplayedPlayers(filtered.slice(0, 20));
       }
     }
   }
 
-  const [playerIndexStart, setPlayerIndexStart] = useState(0);
   function setDisplayedData(indexStart, indexEnd, players){
     setPlayerIndexStart(indexStart);
     setDisplayedPlayers(players);
