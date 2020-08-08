@@ -11,7 +11,7 @@ const NavBar = () => {
       <div id={'links-div'}>
         <A className={'NavBarLink'} href={'/'}><button className='NavBarLinkButton'>Home</button></A>
         <A className={'NavBarLink'} href={'/teams'}><button className='NavBarLinkButton'>Teams</button></A>
-        <A className={'NavBarLink'} href={'/players'}><button className='NavBarLinkButton'>Players</button></A>
+        {/*<A className={'NavBarLink'} href={'/players'}><button className='NavBarLinkButton'>Players</button></A>*/}
       </div>
     </div>
   );
