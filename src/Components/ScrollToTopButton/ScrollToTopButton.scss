@@ -1,0 +1,18 @@
+#Back-to-top-button {
+  height:3em;
+  width: 3em;
+  float: right;
+  outline: None;
+  border: none;
+  border-radius: 0.5em;
+  background-color: #93E7FF;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  bottom: 1em;
+  right: 1em;
+
+  &:hover {
+    background-color: #211CE7;
+    color: #FFFFFF;
+  }
+}

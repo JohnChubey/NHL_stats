@@ -3,6 +3,7 @@ import './MatchUps.scss';
 import {BASE_API} from "../../Extras/Constants";
 import {MatchUp} from "../MatchUp/MatchUp";
 import moment from 'moment';
+import {ScrollToTopButton} from "../ScrollToTopButton/ScrollToTopButton";
 
 const MatchUps = (props) => {
   const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
@@ -54,6 +55,7 @@ const MatchUps = (props) => {
   return (
     <div className="MatchUps">
       {getMatchups()}
+      <ScrollToTopButton />
     </div>
   );
 };
