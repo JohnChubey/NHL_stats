@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './ScrollToTopButton.scss';
+import { FaArrowUp } from "react-icons/fa";
 
 const ScrollToTopButton = (props) => {
     const [showButton, setShowButton] = useState(false);
@@ -7,7 +8,7 @@ const ScrollToTopButton = (props) => {
     useEffect(() => {
         window.addEventListener('scroll', setButtonState);
         return () => window.removeEventListener('scroll', setButtonState);
-    })
+    });
 
     function setButtonState(e) {
         if(window.pageYOffset === 0){
@@ -18,11 +19,12 @@ const ScrollToTopButton = (props) => {
         }
     }
 
-    function getStying(){
+    function getStyling(){
+        let buttonVal = showButton;
         if(showButton){
-            return {display:null};
-        } else {
             return {};
+        } else {
+            return {display:'none'};
         }
     }
 
@@ -31,8 +33,10 @@ const ScrollToTopButton = (props) => {
     }
 
     return (
-        <button id={'Back-to-top-button'} style={getStying()} onClick={scrollToTop}>Back to Top</button>
+        <button id={'Back-to-top-button'} style={getStyling()} onClick={scrollToTop}>
+            <FaArrowUp />
+        </button>
     );
-}
+};
 
 export {ScrollToTopButton};

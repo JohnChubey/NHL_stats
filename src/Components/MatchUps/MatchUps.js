@@ -52,18 +52,10 @@ const MatchUps = (props) => {
     }
   }
 
-  function scrollToTop(){
-    window.scrollTo({top:0, behavior:"smooth"})
-  }
-
-  function getBackToTopButton(){
-    return <ScrollToTopButton />
-  }
-
   return (
     <div className="MatchUps">
       {getMatchups()}
-      {getBackToTopButton()}
+      <ScrollToTopButton />
     </div>
   );
 };
