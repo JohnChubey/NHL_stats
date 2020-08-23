@@ -25,11 +25,33 @@
 }
 
 #Players-pagination {
-  border: 0.1em solid red;
-  width: 90%;
+  padding: 0.1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.Player-Paginator {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  p {
+    text-align: center;
+  }
+  button {
+    border: none;
+    background-color: #F0F0F0;
+    font-size: 0.9rem;
+
+    &:focus {
+      outline: None;
+    }
+  }
 }
 
 #Players-type-dropdown-div {
+}
+
+@media screen and (min-width: 1655px) {
+  #Players-pagination {
+    width: 94em;
+  }
 }
