@@ -4,10 +4,17 @@ import './Paginator.scss';
 const Paginator = (props) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [maxPages, setMaxPages] = useState(1);
+  const [classname, setClassname] = useState('Paginator');
+
+  useEffect(() => {
+    if(props.className){
+      setClassname(props.className);
+    }
+  }, []);
 
   useEffect(() => {
     if(props.data){
-      setMaxPages(Math.ceil(props.data.length/props.dataPerPage))
+      setMaxPages(Math.ceil(props.data.length/props.dataPerPage));
     }
   }, [props.data]);
 
@@ -33,7 +40,7 @@ const Paginator = (props) => {
   }
 
   return (
-    <div className="Paginator">
+    <div className={classname}>
       <button onClick={handlePreviousClick}>Previous</button>
       <p>{currentPageNumber}</p>
       <button onClick={handleNextClick}>Next</button>

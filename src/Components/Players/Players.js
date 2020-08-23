@@ -119,7 +119,7 @@ const Players = () => {
       </div>
       {getPlayerTable()}
       <div id={'Players-pagination'}>
-        <Paginator data={filteredPlayers} setDisplayedData={setDisplayedData} dataPerPage={20} />
+        <Paginator className={'Player-Paginator'} data={filteredPlayers} setDisplayedData={setDisplayedData} dataPerPage={20} />
       </div>
     </div>
   );

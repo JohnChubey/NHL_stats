@@ -25,6 +25,10 @@
 }
 
 #Players-pagination {
+  border: 0.1em solid red;
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #Players-type-dropdown-div {
