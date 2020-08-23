@@ -9,7 +9,7 @@ import {Players} from "./Components/Players/Players";
 const routes = {
     '/': () => <Home />,
     '/teams': () => <Teams />,
-    // '/players': () => <Players />,
+    '/players': () => <Players />,
   };
 
 const App = () => {
