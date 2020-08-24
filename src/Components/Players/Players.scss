@@ -1,0 +1,76 @@
+.Players {
+  background-color: #FAF9F9;
+  width: 90%;
+  margin: 1em auto 0 auto;
+}
+
+#PlayerStatsTable {
+  border-spacing: unset;
+}
+
+#PlayerStatsTable-div {
+  overflow-y: hidden;
+  background-color: #FAF9F9;;
+  margin-top: 1em;
+  th {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #0A026E;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  td {
+    text-align: center;
+    padding: 0.5em 0 0.5em 0;
+  }
+}
+
+#Players-pagination {
+  padding: 0.1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.Player-Paginator {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  p {
+    text-align: center;
+  }
+  button {
+    border: none;
+    background-color: #F0F0F0;
+    font-size: 0.9rem;
+
+    &:focus {
+      outline: None;
+    }
+  }
+}
+
+#Players-type-dropdown-div {
+}
+
+#player-type-dropdown {
+  width: 20em;
+  background-color: transparent;
+  padding: 0.5em;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 0.1em solid #000000;
+
+  &:focus {
+    outline: None;
+  }
+}
+
+@media screen and (min-width: 1655px) {
+  #Players-pagination {
+    width: 94em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #player-type-dropdown {
+    width: 70%;
+  }
+}
