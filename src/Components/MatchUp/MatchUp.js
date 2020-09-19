@@ -12,7 +12,7 @@ const MatchUp = (props) => {
           <img className={'MatchUp-logo'} src={BASE_LOGO_API + props.game.teams.home.team.id + '.svg'} alt=""/>
         </div>
         <p className={'MatchUp-team-name'}>{props.game.teams.home.team.name}</p>
-        <p className={'MatchUp-team-record'}>{props.game.teams.home.leagueRecord.wins}-{props.game.teams.home.leagueRecord.losses}</p>
+        <p className={'MatchUp-team-record'}>{props.game.teams.home.leagueRecord.wins}-{props.game.teams.home.leagueRecord.losses}-{props.game.teams.home.leagueRecord.ot}</p>
       </div>
       <div className={'MatchUp-score-div'}>
         <p>Score</p>
@@ -26,7 +26,7 @@ const MatchUp = (props) => {
           <img className={'MatchUp-logo'} src={BASE_LOGO_API + props.game.teams.away.team.id + '.svg'} alt=""/>
         </div>
         <p className={'MatchUp-team-name'}>{props.game.teams.away.team.name}</p>
-        <p className={'MatchUp-team-record'}>{props.game.teams.away.leagueRecord.wins}-{props.game.teams.away.leagueRecord.losses}</p>
+        <p className={'MatchUp-team-record'}>{props.game.teams.away.leagueRecord.wins}-{props.game.teams.away.leagueRecord.losses}-{props.game.teams.away.leagueRecord.ot}</p>
       </div>
       <div className={'MatchUp-extra-info-div'}>
         <p>{props.game.venue.name} @ {moment(props.game.gameDate).format('h:mm A')}</p>
