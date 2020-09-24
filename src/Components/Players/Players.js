@@ -49,7 +49,7 @@ const Players = () => {
       let stringNumber = number.toString();
       return stringNumber.slice(0, stringNumber.indexOf('.') + 2);
     } else {
-      return 'N/A';
+      return '0';
     }
   }
 
@@ -85,7 +85,7 @@ const Players = () => {
             <th>Player Name</th>
             <th>Position</th>
             <th>Games Played</th>
-            <th>Games Started</th>
+            <th>Started</th>
             <th>Record</th>
             <th>Shots</th>
             <th>Saves</th>
@@ -93,15 +93,15 @@ const Players = () => {
             <th>Shutouts</th>
             <th>GA</th>
             <th>GAA</th>
-            <th>Even Shots</th>
-            <th>Even Saves</th>
-            <th>Even Save %</th>
-            <th>PP Shots</th>
-            <th>PP Saves</th>
-            <th>PP Save %</th>
-            <th>SH Shots</th>
-            <th>SH Saves</th>
-            <th>SH Save %</th>
+            <th>ESH</th>
+            <th>ESA</th>
+            <th>ESA%</th>
+            <th>PPSH</th>
+            <th>PPSA</th>
+            <th>PPSA%</th>
+            <th>SHSH</th>
+            <th>SHSA</th>
+            <th>SHSA%</th>
             <th>TOI</th>
             <th>TOI/Game</th>
           </tr>
