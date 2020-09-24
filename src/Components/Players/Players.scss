@@ -1,7 +1,13 @@
 .Players {
   background-color: #FAF9F9;
-  width: 90%;
+  //width: 90%;
   margin: 1em auto 0 auto;
+  display: grid;
+  grid-template-areas: ". dropdown ."
+                       ". player-table ."
+                       ". paginator .";
+  grid-template-columns: 1fr 28fr 1fr;
+  grid-template-rows: 1fr 16fr 2fr;
 }
 
 #PlayerStatsTable {
@@ -10,8 +16,9 @@
 
 #PlayerStatsTable-div {
   overflow-y: hidden;
-  background-color: #FAF9F9;;
-  margin-top: 1em;
+  background-color: #FAF9F9;
+  grid-area: player-table;
+  display: grid;
   th {
     padding: 0.5em 0.5em 0.5em 0.5em;
     background-color: #0A026E;
@@ -28,9 +35,17 @@
   padding: 0.1em;
   margin-top: 1em;
   margin-bottom: 1em;
+  grid-area: paginator;
+  display: grid;
+  justify-items: center;
+  grid-template-areas: ". pagination .";
+  grid-template-columns: 1fr 38fr 1fr;
 }
 
 .Player-Paginator {
+  width: 90%;
+  height: 3em;
+  grid-area: pagination;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   p {
@@ -48,6 +63,7 @@
 }
 
 #Players-type-dropdown-div {
+  grid-area: dropdown;
 }
 
 #player-type-dropdown {
@@ -63,11 +79,11 @@
   }
 }
 
-@media screen and (min-width: 1655px) {
-  #Players-pagination {
-    width: 94em;
-  }
-}
+//@media screen and (min-width: 1655px) {
+//  #Players-pagination {
+//    width: 94em;
+//  }
+//}
 
 @media screen and (max-width: 500px) {
   #player-type-dropdown {
