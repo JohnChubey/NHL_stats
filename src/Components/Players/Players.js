@@ -44,6 +44,15 @@ const Players = () => {
     setDisplayedPlayers(players);
   }
 
+  function truncateDecimal(number) {
+    if (number) {
+      let stringNumber = number.toString();
+      return stringNumber.slice(0, stringNumber.indexOf('.') + 2);
+    } else {
+      return 'N/A';
+    }
+  }
+
   function getTableHeaders(){
     if(filter === SKATERS){
       return <tr id={'PlayerStatsTable-headers'}>
@@ -72,28 +81,29 @@ const Players = () => {
           </tr>
     } else {
       return <tr id={'PlayerStatsTable-headers'}>
-            <th>BLASSS</th>
-            <th>Paaasasfdsf</th>
+            <th>Ranking</th>
+            <th>Player Name</th>
             <th>Position</th>
             <th>Games Played</th>
-            <th>Goals</th>
-            <th>Assists</th>
-            <th>Points</th>
-            <th>+/-</th>
+            <th>Games Started</th>
+            <th>Record</th>
             <th>Shots</th>
-            <th>Shot %</th>
-            <th>Shifts</th>
-            <th>TOI/G</th>
-            <th>Blocked Shots</th>
-            <th>Hits</th>
-            <th>PIM</th>
-            <th>SHG</th>
-            <th>SHP</th>
-            <th>SHTOI</th>
-            <th>PPG</th>
-            <th>PPP</th>
-            <th>PPTOI</th>
-            <th>GWG</th>
+            <th>Saves</th>
+            <th>Save %</th>
+            <th>Shutouts</th>
+            <th>GA</th>
+            <th>GAA</th>
+            <th>Even Shots</th>
+            <th>Even Saves</th>
+            <th>Even Save %</th>
+            <th>PP Shots</th>
+            <th>PP Saves</th>
+            <th>PP Save %</th>
+            <th>SH Shots</th>
+            <th>SH Saves</th>
+            <th>SH Save %</th>
+            <th>TOI</th>
+            <th>TOI/Game</th>
           </tr>
     }
   }
@@ -134,25 +144,22 @@ const Players = () => {
               <td>{player.position.abbreviation}</td>
               <td>{player.stats.games}</td>
               <td>{player.stats.gamesStarted}</td>
-              <td>{player.stats.wins}</td>
-              <td>{player.stats.losses}</td>
-              <td>{player.stats.ot}%</td>
+              <td>{player.stats.wins}-{player.stats.losses}-{player.stats.ot}</td>
+              <td>{player.stats.shotsAgainst}</td>
+              <td>{player.stats.saves}</td>
+              <td>{player.stats.savePercentage}</td>
+              <td>{player.stats.shutouts}</td>
+              <td>{player.stats.goalsAgainst}</td>
+              <td>{player.stats.goalAgainstAverage}</td>
               <td>{player.stats.evenShots}</td>
               <td>{player.stats.evenSaves}</td>
-              <td>{player.stats.evenStrengthSavePercentage}</td>
-              <td>{player.stats.goalAgainstAverage}</td>
-              <td>{player.stats.goalsAgainst}</td>
-              <td>{player.stats.powerPlaySavePercentage}</td>
-              <td>{player.stats.powerPlaySaves}</td>
+              <td>{truncateDecimal(player.stats.evenStrengthSavePercentage)}%</td>
               <td>{player.stats.powerPlayShots}</td>
-              <td>{player.stats.savePercentage}</td>
-              <td>{player.stats.saves}</td>
-              <td>{player.stats.shortHandedSavePercentage}</td>
-              <td>{player.stats.shortHandedSaves}</td>
+              <td>{player.stats.powerPlaySaves}</td>
+              <td>{truncateDecimal(player.stats.powerPlaySavePercentage)}%</td>
               <td>{player.stats.shortHandedShots}</td>
-              <td>{player.stats.shotsAgainst}</td>
-              <td>{player.stats.shutouts}</td>
-              <td>{player.stats.ties}</td>
+              <td>{player.stats.shortHandedSaves}</td>
+              <td>{truncateDecimal(player.stats.shortHandedSavePercentage)}%</td>
               <td>{player.stats.timeOnIce}</td>
               <td>{player.stats.timeOnIcePerGame}</td>
             </tr>
