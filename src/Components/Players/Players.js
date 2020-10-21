@@ -44,13 +44,18 @@ const Players = () => {
     setDisplayedPlayers(players);
   }
 
-  function getPlayerTable(){
-    if(displayedPlayers === null){
-      return <p>Loading...</p>
+  function truncateDecimal(number) {
+    if (number) {
+      let stringNumber = number.toString();
+      return stringNumber.slice(0, stringNumber.indexOf('.') + 2);
     } else {
-      return <div id={'PlayerStatsTable-div'}>
-        <table id={'PlayerStatsTable'}>
-          <tr id={'PlayerStatsTable-headers'}>
+      return '0';
+    }
+  }
+
+  function getTableHeaders(){
+    if(filter === SKATERS){
+      return <tr id={'PlayerStatsTable-headers'}>
             <th>Ranking</th>
             <th>Player Name</th>
             <th>Position</th>
@@ -74,8 +79,39 @@ const Players = () => {
             <th>PPTOI</th>
             <th>GWG</th>
           </tr>
-          {displayedPlayers.map((player, index) => {
-            return <tr>
+    } else {
+      return <tr id={'PlayerStatsTable-headers'}>
+            <th>Ranking</th>
+            <th>Player Name</th>
+            <th>Position</th>
+            <th>Games Played</th>
+            <th>Started</th>
+            <th>Record</th>
+            <th>Shots</th>
+            <th>Saves</th>
+            <th>Save %</th>
+            <th>Shutouts</th>
+            <th>GA</th>
+            <th>GAA</th>
+            <th>ESH</th>
+            <th>ESA</th>
+            <th>ESA%</th>
+            <th>PPSH</th>
+            <th>PPSA</th>
+            <th>PPSA%</th>
+            <th>SHSH</th>
+            <th>SHSA</th>
+            <th>SHSA%</th>
+            <th>TOI</th>
+            <th>TOI/Game</th>
+          </tr>
+    }
+  }
+
+  function getTableData(){
+    if(filter === SKATERS){
+      return displayedPlayers.map((player, index) => {
+            return <tr key={index}>
               <td>{playerIndexStart + index + 1}</td>
               <td>{player.player.fullName}</td>
               <td>{player.position.abbreviation}</td>
@@ -99,7 +135,48 @@ const Players = () => {
               <td>{player.stats.powerPlayTimeOnIcePerGame}</td>
               <td>{player.stats.gameWinningGoals}</td>
             </tr>
-          })}
+          })
+    } else {
+      return displayedPlayers.map((player, index) => {
+            return <tr key={index}>
+              <td>{playerIndexStart + index + 1}</td>
+              <td>{player.player.fullName}</td>
+              <td>{player.position.abbreviation}</td>
+              <td>{player.stats.games}</td>
+              <td>{player.stats.gamesStarted}</td>
+              <td>{player.stats.wins}-{player.stats.losses}-{player.stats.ot}</td>
+              <td>{player.stats.shotsAgainst}</td>
+              <td>{player.stats.saves}</td>
+              <td>{player.stats.savePercentage}</td>
+              <td>{player.stats.shutouts}</td>
+              <td>{player.stats.goalsAgainst}</td>
+              <td>{player.stats.goalAgainstAverage}</td>
+              <td>{player.stats.evenShots}</td>
+              <td>{player.stats.evenSaves}</td>
+              <td>{truncateDecimal(player.stats.evenStrengthSavePercentage)}%</td>
+              <td>{player.stats.powerPlayShots}</td>
+              <td>{player.stats.powerPlaySaves}</td>
+              <td>{truncateDecimal(player.stats.powerPlaySavePercentage)}%</td>
+              <td>{player.stats.shortHandedShots}</td>
+              <td>{player.stats.shortHandedSaves}</td>
+              <td>{truncateDecimal(player.stats.shortHandedSavePercentage)}%</td>
+              <td>{player.stats.timeOnIce}</td>
+              <td>{player.stats.timeOnIcePerGame}</td>
+            </tr>
+          })
+    }
+  }
+
+  function getPlayerTable() {
+    if (displayedPlayers === null) {
+      return <p>Loading...</p>
+    } else {
+      return <div id={'PlayerStatsTable-div'}>
+        <table id={'PlayerStatsTable'}>
+          <tbody>
+          {getTableHeaders()}
+          {getTableData()}
+          </tbody>
         </table>
       </div>
     }
