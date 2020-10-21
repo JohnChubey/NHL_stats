@@ -167,14 +167,16 @@ const Players = () => {
     }
   }
 
-  function getPlayerTable(){
-    if(displayedPlayers === null){
+  function getPlayerTable() {
+    if (displayedPlayers === null) {
       return <p>Loading...</p>
     } else {
       return <div id={'PlayerStatsTable-div'}>
         <table id={'PlayerStatsTable'}>
+          <tbody>
           {getTableHeaders()}
           {getTableData()}
+          </tbody>
         </table>
       </div>
     }
