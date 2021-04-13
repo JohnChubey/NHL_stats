@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './Players.scss';
 import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
 import {Paginator} from "../Paginator/Paginator";
+import * as Header from "../../Extras/TableHeaderConstants";
+import { comparatorFactory } from '../../Extras/comparators';
 
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
@@ -23,19 +25,21 @@ const Players = () => {
 
   function filterPlayers() {
     if (allPlayers) {
+      let filtered;
       if (filter === SKATERS) {
-        let filtered = allPlayers.filter(player => {
+        filtered = allPlayers.filter(player => {
           return player.position.code.toLowerCase() !== GOALIE;
         });
-        setFilteredPlayers(filtered);
-        setDisplayedPlayers(filtered.slice(0, 20));
       } else {
-        let filtered = allPlayers.filter(player => {
+        filtered = allPlayers.filter(player => {
           return player.position.code.toLowerCase() === GOALIE;
         });
-        setFilteredPlayers(filtered);
-        setDisplayedPlayers(filtered.slice(0, 20));
       }
+      debugger;
+      const comparatorFunction = comparatorFactory(Header.POINTS);
+      filtered.sort(comparatorFunction)
+      setFilteredPlayers(filtered);
+      setDisplayedPlayers(filtered.slice(0, 20));
     }
   }
 
@@ -53,16 +57,20 @@ const Players = () => {
     }
   }
 
+  function sortPlayerHeader(header){
+    console.log(header);
+  }
+
   function getTableHeaders(){
     if(filter === SKATERS){
       return <tr id={'PlayerStatsTable-headers'}>
             <th>Ranking</th>
             <th>Player Name</th>
             <th>Position</th>
-            <th>Games Played</th>
+            <th onClick={() => sortPlayerHeader(Header.GAMES_PLAYED)}>Games Played</th>
             <th>Goals</th>
             <th>Assists</th>
-            <th>Points</th>
+            <th onClick={() => sortPlayerHeader(Header.POINTS)}>Points</th>
             <th>+/-</th>
             <th>Shots</th>
             <th>Shot %</th>
