@@ -3,7 +3,7 @@ import './Players.scss';
 import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
 import {Paginator} from "../Paginator/Paginator";
 import * as Header from "../../Extras/TableHeaderConstants";
-import { comparatorFactory } from '../../Extras/comparators';
+import { getComparator } from '../../Extras/comparators';
 
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
@@ -36,7 +36,7 @@ const Players = () => {
         });
       }
       debugger;
-      const comparatorFunction = comparatorFactory(Header.POINTS);
+      const comparatorFunction = getComparator(Header.POINTS);
       filtered.sort(comparatorFunction)
       setFilteredPlayers(filtered);
       setDisplayedPlayers(filtered.slice(0, 20));
