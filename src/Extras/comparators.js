@@ -6,7 +6,8 @@ export const comparePoints = (player1, player2) => {
 
 export const getComparator = (header) => {
     debugger;
-    if(header === Headers.POINTS){
-        return comparePoints;
+    switch(header){
+        case Headers.POINTS:
+            return comparePoints;
     }
 };

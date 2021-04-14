@@ -8,6 +8,7 @@ import { getComparator } from '../../Extras/comparators';
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
   const [filteredPlayers, setFilteredPlayers] = useState(null);
+  const [tableFilter, setTableFilter] = useState(Header.POINTS);
   const [displayedPlayers, setDisplayedPlayers] = useState(null);
   const [playerIndexStart, setPlayerIndexStart] = useState(0);
   const [filter, setFilter] = useState(SKATERS);
@@ -21,7 +22,7 @@ const Players = () => {
 
   useEffect( () => {
     filterPlayers();
-  }, [allPlayers, filter]);
+  }, [allPlayers, filter, tableFilter]);
 
   function filterPlayers() {
     if (allPlayers) {
@@ -36,7 +37,7 @@ const Players = () => {
         });
       }
       debugger;
-      const comparatorFunction = getComparator(Header.POINTS);
+      const comparatorFunction = getComparator(tableFilter);
       filtered.sort(comparatorFunction)
       setFilteredPlayers(filtered);
       setDisplayedPlayers(filtered.slice(0, 20));
@@ -58,6 +59,7 @@ const Players = () => {
   }
 
   function sortPlayerHeader(header){
+    setTableFilter(header);
     console.log(header);
   }
 
@@ -68,24 +70,24 @@ const Players = () => {
             <th>Player Name</th>
             <th>Position</th>
             <th onClick={() => sortPlayerHeader(Header.GAMES_PLAYED)}>Games Played</th>
-            <th>Goals</th>
-            <th>Assists</th>
+            <th onClick={() => sortPlayerHeader(Header.GOALS)}>Goals</th>
+            <th onClick={() => sortPlayerHeader(Header.ASSISTS)}>Assists</th>
             <th onClick={() => sortPlayerHeader(Header.POINTS)}>Points</th>
-            <th>+/-</th>
-            <th>Shots</th>
-            <th>Shot %</th>
-            <th>Shifts</th>
-            <th>TOI/G</th>
-            <th>Blocked Shots</th>
-            <th>Hits</th>
-            <th>PIM</th>
-            <th>SHG</th>
-            <th>SHP</th>
-            <th>SHTOI</th>
-            <th>PPG</th>
-            <th>PPP</th>
-            <th>PPTOI</th>
-            <th>GWG</th>
+            <th onClick={() => sortPlayerHeader(Header.PLUS_MINUS)}>+/-</th>
+            <th onClick={() => sortPlayerHeader(Header.SHOTS)}>Shots</th>
+            <th onClick={() => sortPlayerHeader(Header.SHOT_PCG)}>Shot %</th>
+            <th onClick={() => sortPlayerHeader(Header.SHIFTS)}>Shifts</th>
+            <th onClick={() => sortPlayerHeader(Header.TIME_ON_ICE)}>TOI/G</th>
+            <th onClick={() => sortPlayerHeader(Header.BLOCKED_SHOTS)}>Blocked Shots</th>
+            <th onClick={() => sortPlayerHeader(Header.HITS)}>Hits</th>
+            <th onClick={() => sortPlayerHeader(Header.PENALTY_MIN)}>PIM</th>
+            <th onClick={() => sortPlayerHeader(Header.SHORT_HANDED_GOALS)}>SHG</th>
+            <th onClick={() => sortPlayerHeader(Header.SHORT_HANDED_POINTS)}>SHP</th>
+            <th onClick={() => sortPlayerHeader(Header.SHORT_HANDED_TOI)}>SHTOI</th>
+            <th onClick={() => sortPlayerHeader(Header.POWER_PLAY_GOALS)}>PPG</th>
+            <th onClick={() => sortPlayerHeader(Header.POWER_PLAY_POINTS)}>PPP</th>
+            <th onClick={() => sortPlayerHeader(Header.POWER_PLAY_TOI)}>PPTOI</th>
+            <th onClick={() => sortPlayerHeader(Header.GAME_WINNING_GOALS)}>GWG</th>
           </tr>
     } else {
       return <tr id={'PlayerStatsTable-headers'}>
