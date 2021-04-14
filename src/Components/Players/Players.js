@@ -36,7 +36,6 @@ const Players = () => {
           return player.position.code.toLowerCase() === GOALIE;
         });
       }
-      debugger;
       const comparatorFunction = getComparator(tableFilter);
       filtered.sort(comparatorFunction)
       setFilteredPlayers(filtered);
@@ -75,7 +74,7 @@ const Players = () => {
             <th onClick={() => sortPlayerHeader(Header.POINTS)}>Points</th>
             <th onClick={() => sortPlayerHeader(Header.PLUS_MINUS)}>+/-</th>
             <th onClick={() => sortPlayerHeader(Header.SHOTS)}>Shots</th>
-            <th onClick={() => sortPlayerHeader(Header.SHOT_PCG)}>Shot %</th>
+            <th onClick={() => sortPlayerHeader(Header.SHOT_PCT)}>Shot %</th>
             <th onClick={() => sortPlayerHeader(Header.SHIFTS)}>Shifts</th>
             <th onClick={() => sortPlayerHeader(Header.TIME_ON_ICE)}>TOI/G</th>
             <th onClick={() => sortPlayerHeader(Header.BLOCKED_SHOTS)}>Blocked Shots</th>
