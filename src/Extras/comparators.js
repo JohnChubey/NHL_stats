@@ -1,4 +1,4 @@
-import * as Headers from "./TableHeaderConstants";
+import {PLAYER_CONSTANTS} from "./TableHeaderConstants";
 
 export const comparePoints = (player1, player2) => {
     return player2.stats.points - player1.stats.points;
@@ -87,45 +87,57 @@ export const compareGWG = (player1, player2) => {
     return player2.stats.gameWinningGoals - player1.stats.gameWinningGoals;
 };
 
+const getHeaders = (headerObject) => {
+    return Object.keys(headerObject).reduce((accumulator, currentValue) => {
+        return {
+            ...accumulator,
+            [currentValue]: currentValue,
+        }
+    }, {});
+}
+
 export const getComparator = (header) => {
+    const headers = getHeaders(PLAYER_CONSTANTS);
     switch(header){
-        case Headers.GAMES_PLAYED:
+        case headers.GAMES_PLAYED:
             return compareGamesPlayed;
-        case Headers.GOALS:
+        case headers.GOALS:
             return compareGoals;
-        case Headers.ASSISTS:
+        case headers.ASSISTS:
             return compareAssists;
-        case Headers.POINTS:
+        case headers.POINTS:
             return comparePoints;
-        case Headers.PLUS_MINUS:
+        case headers.PLUS_MINUS:
             return comparePlusMinus;
-        case Headers.SHOTS:
+        case headers.SHOTS:
             return compareShots;
-        case Headers.SHOT_PCT:
+        case headers.SHOT_PCT:
             return compareShotPct;
-        case Headers.SHIFTS:
+        case headers.SHIFTS:
             return compareShifts;
-        case Headers.TIME_ON_ICE:
+        case headers.TIME_ON_ICE:
             return compareTOI;
-        case Headers.BLOCKED_SHOTS:
+        case headers.BLOCKED_SHOTS:
             return compareBlockedShots;
-        case Headers.HITS:
+        case headers.HITS:
             return compareHits;
-        case Headers.PENALTY_MIN:
+        case headers.PENALTY_MIN:
             return comparePIM;
-        case Headers.SHORT_HANDED_GOALS:
+        case headers.SHORT_HANDED_GOALS:
             return compareSHG;
-        case Headers.SHORT_HANDED_POINTS:
+        case headers.SHORT_HANDED_POINTS:
             return compareSHP;
-        case Headers.SHORT_HANDED_TOI:
+        case headers.SHORT_HANDED_TOI:
             return compareSHTOI;
-        case Headers.POWER_PLAY_GOALS:
+        case headers.POWER_PLAY_GOALS:
             return comparePPG;
-        case Headers.POWER_PLAY_POINTS:
+        case headers.POWER_PLAY_POINTS:
             return comparePPP;
-        case Headers.POWER_PLAY_TOI:
+        case headers.POWER_PLAY_TOI:
             return comparePPTOI;
-        case Headers.GAME_WINNING_GOALS:
+        case headers.GAME_WINNING_GOALS:
             return compareGWG;
+        default:
+            return comparePoints;
     }
 };

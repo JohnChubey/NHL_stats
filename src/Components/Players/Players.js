@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 import './Players.scss';
 import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
 import {Paginator} from "../Paginator/Paginator";
-import * as Header from "../../Extras/TableHeaderConstants";
+import {PLAYER_CONSTANTS} from "../../Extras/TableHeaderConstants";
 import { getComparator } from '../../Extras/comparators';
 
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
   const [filteredPlayers, setFilteredPlayers] = useState(null);
-  const [tableFilter, setTableFilter] = useState(Header.POINTS);
+  const [tableFilter, setTableFilter] = useState(PLAYER_CONSTANTS.POINTS.header);
   const [displayedPlayers, setDisplayedPlayers] = useState(null);
   const [playerIndexStart, setPlayerIndexStart] = useState(0);
   const [filter, setFilter] = useState(SKATERS);
@@ -62,31 +62,16 @@ const Players = () => {
     console.log(header);
   }
 
+  function getHeaders(headersObject){
+    return Object.keys(headersObject).map((headerName, index) => {
+      return <th key={index} onClick={() => sortPlayerHeader(headersObject[headerName].header)}>{headersObject[headerName].description}</th>
+    })
+  }
+
   function getTableHeaders(){
     if(filter === SKATERS){
       return <tr id={'PlayerStatsTable-headers'}>
-            <th>Ranking</th>
-            <th>Player Name</th>
-            <th>Position</th>
-            <th onClick={() => sortPlayerHeader(Header.GAMES_PLAYED)}>Games Played</th>
-            <th onClick={() => sortPlayerHeader(Header.GOALS)}>Goals</th>
-            <th onClick={() => sortPlayerHeader(Header.ASSISTS)}>Assists</th>
-            <th onClick={() => sortPlayerHeader(Header.POINTS)}>Points</th>
-            <th onClick={() => sortPlayerHeader(Header.PLUS_MINUS)}>+/-</th>
-            <th onClick={() => sortPlayerHeader(Header.SHOTS)}>Shots</th>
-            <th onClick={() => sortPlayerHeader(Header.SHOT_PCT)}>Shot %</th>
-            <th onClick={() => sortPlayerHeader(Header.SHIFTS)}>Shifts</th>
-            <th onClick={() => sortPlayerHeader(Header.TIME_ON_ICE)}>TOI/G</th>
-            <th onClick={() => sortPlayerHeader(Header.BLOCKED_SHOTS)}>Blocked Shots</th>
-            <th onClick={() => sortPlayerHeader(Header.HITS)}>Hits</th>
-            <th onClick={() => sortPlayerHeader(Header.PENALTY_MIN)}>PIM</th>
-            <th onClick={() => sortPlayerHeader(Header.SHORT_HANDED_GOALS)}>SHG</th>
-            <th onClick={() => sortPlayerHeader(Header.SHORT_HANDED_POINTS)}>SHP</th>
-            <th onClick={() => sortPlayerHeader(Header.SHORT_HANDED_TOI)}>SHTOI</th>
-            <th onClick={() => sortPlayerHeader(Header.POWER_PLAY_GOALS)}>PPG</th>
-            <th onClick={() => sortPlayerHeader(Header.POWER_PLAY_POINTS)}>PPP</th>
-            <th onClick={() => sortPlayerHeader(Header.POWER_PLAY_TOI)}>PPTOI</th>
-            <th onClick={() => sortPlayerHeader(Header.GAME_WINNING_GOALS)}>GWG</th>
+            {getHeaders(PLAYER_CONSTANTS)}
           </tr>
     } else {
       return <tr id={'PlayerStatsTable-headers'}>

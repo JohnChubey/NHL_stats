@@ -1,23 +1,29 @@
 // Player Headers
-export const GAMES_PLAYED = 'GAMES_PLAYED';
-export const GOALS = 'GOALS';
-export const ASSISTS = 'ASSISTS';
-export const POINTS = 'POINTS';
+export const PLAYER_CONSTANTS = {
+    RANKING: {header: 'RANKING', description: 'Ranking'},
+    PLAYER_NAME: {header: 'PLAYER_NAME', description: 'Player Name'},
+    POSITION: {header: 'POSITION', description: 'Position'},
+    
+    GAMES_PLAYED: {header: 'GAMES_PLAYED', description: 'Games Played'},
+    GOALS: {header: 'GOALS', description: 'Goals'},
+    ASSISTS: {header: 'ASSISTS', description: 'Assists'},
+    POINTS: {header: 'POINTS', description: 'Points'},
 
-export const PLUS_MINUS = 'PLUS_MINUS';
-export const SHOTS = 'SHOTS';
-export const SHOT_PCT = 'SHOT_PCT';
-export const SHIFTS = 'SHIFTS';
-export const TIME_ON_ICE = 'TIME_ON_ICE';
+    PLUS_MINUS: {header: 'PLUS_MINUS', description: '+/-'},
+    SHOTS: {header: 'SHOTS', description: 'Shots'},
+    SHOT_PCT: {header: 'SHOT_PCT', description: 'Shot %'},
+    SHIFTS: {header: 'SHIFTS', description: 'Shifts'},
+    TIME_ON_ICE: {header: 'TIME_ON_ICE', description: 'TOI/G'},
 
-export const BLOCKED_SHOTS = 'BLOCKED_SHOTS';
-export const HITS = 'HITS';
-export const PENALTY_MIN = 'PENALTY_MIN';
-export const SHORT_HANDED_GOALS = 'SHORT_HANDED_GOALS';
-export const SHORT_HANDED_POINTS = 'SHORT_HANDED_POINTS';
+    BLOCKED_SHOTS: {header: 'BLOCKED_SHOTS', description: 'Blocked Shots'},
+    HITS: {header: 'HITS', description: 'Hits'},
+    PENALTY_MIN: {header: 'PENALTY_MIN', description: 'PIM'},
+    SHORT_HANDED_GOALS: {header: 'SHORT_HANDED_GOALS', description: 'SHG'},
+    SHORT_HANDED_POINTS: {header: 'SHORT_HANDED_POINTS', description: 'SHP'},
 
-export const SHORT_HANDED_TOI = 'SHORT_HANDED_TOI';
-export const POWER_PLAY_GOALS = 'POWER_PLAY_GOALS';
-export const POWER_PLAY_POINTS = 'POWER_PLAY_POINTS';
-export const POWER_PLAY_TOI = 'POWER_PLAY_TOI';
-export const GAME_WINNING_GOALS = 'GAME_WINNING_GOALS';
+    SHORT_HANDED_TOI: {header: 'SHORT_HANDED_TOI', description: 'SHTOI'},
+    POWER_PLAY_GOALS: {header: 'POWER_PLAY_GOALS', description: 'PPG'},
+    POWER_PLAY_POINTS: {header: 'POWER_PLAY_POINTS', description: 'PPP'},
+    POWER_PLAY_TOI: {header: 'POWER_PLAY_TOI', description: 'PPTOI'},
+    GAME_WINNING_GOALS: {header: 'GAME_WINNING_GOALS', description: 'GWG'}
+}
