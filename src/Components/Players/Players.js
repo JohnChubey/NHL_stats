@@ -8,7 +8,7 @@ import { getComparator } from '../../Extras/comparators';
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
   const [filteredPlayers, setFilteredPlayers] = useState(null);
-  const [tableFilter, setTableFilter] = useState(PLAYER_CONSTANTS.POINTS.header);
+  const [tableFilter, setTableFilter] = useState(PLAYER_CONSTANTS.POINTS);
   const [displayedPlayers, setDisplayedPlayers] = useState(null);
   const [playerIndexStart, setPlayerIndexStart] = useState(0);
   const [filter, setFilter] = useState(SKATERS);
@@ -64,7 +64,7 @@ const Players = () => {
 
   function getHeaders(headersObject){
     return Object.keys(headersObject).map((headerName, index) => {
-      return <th key={index} onClick={() => sortPlayerHeader(headersObject[headerName].header)}>{headersObject[headerName].description}</th>
+      return <th key={index} onClick={() => sortPlayerHeader(headersObject[headerName])}>{headersObject[headerName].description}</th>
     })
   }
 
