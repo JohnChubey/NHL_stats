@@ -1,4 +1,4 @@
-import {PLAYER_CONSTANTS} from "./TableHeaderConstants";
+import {GOALIE_CONSTANTS, PLAYER_CONSTANTS} from "./TableHeaderConstants";
 
 export const comparePoints = (player1, player2) => {
     return player2.stats.points - player1.stats.points;
@@ -96,8 +96,56 @@ const getHeaders = (headerObject) => {
     }, {});
 }
 
+
+
+export const compareStarted = (player1, player2) => {
+    return player2.stats.gamesStarted - player1.stats.gamesStarted;
+};
+
+const getRecordRanking = (player) => {
+    return player.stats.wins * 2 - player.stats.losses + player.stats.ot
+}
+
+export const compareRecord = (player1, player2) => {
+    const Goalie1 = getRecordRanking(player1);
+    const Goalie2 = getRecordRanking(player2);
+    return Goalie2 - Goalie1;
+};
+
+export const compareShotsAgainst = (player1, player2) => {
+    return player2.stats.shotsAgainst - player1.stats.shotsAgainst;
+};
+
+export const compareSaves = (player1, player2) => {
+    return player2.stats['saves'] - player1.stats['saves'];
+};
+
+export const compareSavePercentage = (player1, player2) => {
+    return player2.stats.savePercentage - player1.stats.savePercentage;
+};
+
+export const compareShutouts = (player1, player2) => {
+    return player2.stats.shutouts - player1.stats.shutouts;
+};
+
+export const compareGoalsAgainst = (player1, player2) => {
+    return player2.stats.goalsAgainst - player1.stats.goalsAgainst;
+};
+
+export const compareGoalsAgainstAverage = (player1, player2) => {
+    return player1.stats.goalAgainstAverage - player2.stats.goalAgainstAverage;
+};
+
+export const compareEvenShots = (player1, player2) => {
+    return player2.stats.evenShots - player1.stats.evenShots;
+};
+
+export const compareEvenSaves = (player1, player2) => {
+    return player2.stats.evenShots - player1.stats.evenShots;
+};
+
 export const getComparator = (header) => {
-    const headers = getHeaders(PLAYER_CONSTANTS);
+    const headers = getHeaders({...PLAYER_CONSTANTS, ...GOALIE_CONSTANTS});
     switch(header){
         case headers.GAMES_PLAYED:
             return compareGamesPlayed;
@@ -137,7 +185,28 @@ export const getComparator = (header) => {
             return comparePPTOI;
         case headers.GAME_WINNING_GOALS:
             return compareGWG;
+
+        case headers.STARTED:
+            return compareStarted;
+        case headers.RECORD:
+            return compareRecord;
+        case headers.SHOTS_AGAINST:
+            return compareShotsAgainst;
+        case headers.SAVES:
+            return compareSaves;
+        case headers.SAVE_PCT:
+            return compareSavePercentage;
+        case headers.SHUTOUTS:
+            return compareShutouts;
+        case headers.GOALS_AGAINST:
+            return compareGoalsAgainst;
+        case headers.GOALS_AGAINST_AVERAGE:
+            return compareGoalsAgainstAverage;
+        case headers.ESH:
+            return compareEvenShots;
+        case headers.ESA:
+            return compareEvenSaves;
         default:
-            return comparePoints;
+            return compareGamesPlayed;
     }
 };

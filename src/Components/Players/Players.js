@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Players.scss';
 import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
 import {Paginator} from "../Paginator/Paginator";
-import {PLAYER_CONSTANTS} from "../../Extras/TableHeaderConstants";
+import {PLAYER_CONSTANTS, GOALIE_CONSTANTS} from "../../Extras/TableHeaderConstants";
 import { getComparator } from '../../Extras/comparators';
 
 const Players = () => {
@@ -75,29 +75,7 @@ const Players = () => {
           </tr>
     } else {
       return <tr id={'PlayerStatsTable-headers'}>
-            <th>Ranking</th>
-            <th>Player Name</th>
-            <th>Position</th>
-            <th>Games Played</th>
-            <th>Started</th>
-            <th>Record</th>
-            <th>Shots</th>
-            <th>Saves</th>
-            <th>Save %</th>
-            <th>Shutouts</th>
-            <th>GA</th>
-            <th>GAA</th>
-            <th>ESH</th>
-            <th>ESA</th>
-            <th>ESA%</th>
-            <th>PPSH</th>
-            <th>PPSA</th>
-            <th>PPSA%</th>
-            <th>SHSH</th>
-            <th>SHSA</th>
-            <th>SHSA%</th>
-            <th>TOI</th>
-            <th>TOI/Game</th>
+            {getHeaders(GOALIE_CONSTANTS)}
           </tr>
     }
   }
