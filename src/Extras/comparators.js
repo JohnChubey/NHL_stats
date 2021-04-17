@@ -23,15 +23,6 @@ const getTimeComparison = (timeString1, timeString2) => {
 
 }
 
-const getHeaders = (headerObject) => {
-    return Object.keys(headerObject).reduce((accumulator, currentValue) => {
-        return {
-            ...accumulator,
-            [currentValue]: currentValue,
-        }
-    }, {});
-}
-
 const getRecordRanking = (player) => {
     return player.stats.wins * 2 - player.stats.losses + player.stats.ot
 }
@@ -44,7 +35,6 @@ export const compareRecord = (player1, player2) => {
 
 
 export const getComparator = (headerObject) => {
-    // const headers = getHeaders({...PLAYER_CONSTANTS, ...GOALIE_CONSTANTS});
     if(headerObject.statType === STAT_TYPE.NUMBER){
         return compareNumbers(headerObject.statDescriptor);
     } else if(headerObject.statType === STAT_TYPE.TIME){
