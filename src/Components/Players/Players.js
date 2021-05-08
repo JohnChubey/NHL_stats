@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './Players.scss';
 import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
 import {Paginator} from "../Paginator/Paginator";
@@ -12,7 +12,8 @@ const Players = () => {
   const [displayedPlayers, setDisplayedPlayers] = useState(null);
   const [playerIndexStart, setPlayerIndexStart] = useState(0);
   const [filter, setFilter] = useState(SKATERS);
-  useEffect( () => {
+
+  useEffect(() => {
     fetch(BASE_LOCAL_API + '/players')
       .then(results => results.json())
       .then(res => {
@@ -20,9 +21,23 @@ const Players = () => {
       });
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
+    if(filter === SKATERS){
+      setTableFilter(PLAYER_CONSTANTS.POINTS);
+    } else {
+      setTableFilter(GOALIE_CONSTANTS.RECORD);
+    }
+  }, [filter]);
+
+  useEffect(() => {
     filterPlayers();
-  }, [allPlayers, filter, tableFilter]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tableFilter]);
+
+  useEffect(() => {
+    filterPlayers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allPlayers]);
 
   function filterPlayers() {
     if (allPlayers) {
@@ -59,7 +74,6 @@ const Players = () => {
 
   function sortPlayerHeader(header){
     setTableFilter(header);
-    console.log(header);
   }
 
   function getHeaders(headersObject){
