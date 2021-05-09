@@ -1,6 +1,5 @@
 .Players {
   background-color: #FAF9F9;
-  //width: 90%;
   margin: 1em auto 0 auto;
   display: grid;
   grid-template-areas: ". dropdown ."
@@ -21,14 +20,22 @@
   display: grid;
   th {
     padding: 0.5em 0.5em 0.5em 0.5em;
-    background-color: #0A026E;
-    color: #FFFFFF;
     cursor: pointer;
   }
   td {
     text-align: center;
     padding: 0.5em 0 0.5em 0;
   }
+}
+
+.selected-header {
+  background-color: #37BAE3;
+  color: #FFFFFF;
+}
+
+.non-selected-header {
+  background-color: #0A026E;
+  color: #FFFFFF;
 }
 
 #Players-pagination {

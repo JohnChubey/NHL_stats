@@ -2,14 +2,18 @@ import React, {useState, useEffect} from 'react';
 import './Players.scss';
 import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
 import {Paginator} from "../Paginator/Paginator";
+import {PLAYER_CONSTANTS, GOALIE_CONSTANTS} from "../../Extras/TableHeaderConstants";
+import { getComparator } from '../../Extras/comparators';
 
 const Players = () => {
   const [allPlayers, setAllPlayers] = useState(null);
   const [filteredPlayers, setFilteredPlayers] = useState(null);
+  const [tableFilter, setTableFilter] = useState(PLAYER_CONSTANTS.POINTS);
   const [displayedPlayers, setDisplayedPlayers] = useState(null);
   const [playerIndexStart, setPlayerIndexStart] = useState(0);
   const [filter, setFilter] = useState(SKATERS);
-  useEffect( () => {
+
+  useEffect(() => {
     fetch(BASE_LOCAL_API + '/players')
       .then(results => results.json())
       .then(res => {
@@ -17,25 +21,40 @@ const Players = () => {
       });
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
+    if(filter === SKATERS){
+      setTableFilter(PLAYER_CONSTANTS.POINTS);
+    } else {
+      setTableFilter(GOALIE_CONSTANTS.RECORD);
+    }
+  }, [filter]);
+
+  useEffect(() => {
     filterPlayers();
-  }, [allPlayers, filter]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tableFilter]);
+
+  useEffect(() => {
+    filterPlayers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allPlayers]);
 
   function filterPlayers() {
     if (allPlayers) {
+      let filtered;
       if (filter === SKATERS) {
-        let filtered = allPlayers.filter(player => {
+        filtered = allPlayers.filter(player => {
           return player.position.code.toLowerCase() !== GOALIE;
         });
-        setFilteredPlayers(filtered);
-        setDisplayedPlayers(filtered.slice(0, 20));
       } else {
-        let filtered = allPlayers.filter(player => {
+        filtered = allPlayers.filter(player => {
           return player.position.code.toLowerCase() === GOALIE;
         });
-        setFilteredPlayers(filtered);
-        setDisplayedPlayers(filtered.slice(0, 20));
       }
+      const comparatorFunction = getComparator(tableFilter);
+      filtered.sort(comparatorFunction)
+      setFilteredPlayers(filtered);
+      setDisplayedPlayers(filtered.slice(0, 20));
     }
   }
 
@@ -53,57 +72,24 @@ const Players = () => {
     }
   }
 
+  function sortPlayerHeader(header){
+    setTableFilter(header);
+  }
+
+  function getHeaders(headersObject){
+    return Object.keys(headersObject).map((headerName, index) => {
+      return <th key={index} className={headerName === tableFilter['header'] ? 'selected-header' : 'non-selected-header'} onClick={() => sortPlayerHeader(headersObject[headerName])}>{headersObject[headerName].description}</th>
+    })
+  }
+
   function getTableHeaders(){
     if(filter === SKATERS){
       return <tr id={'PlayerStatsTable-headers'}>
-            <th>Ranking</th>
-            <th>Player Name</th>
-            <th>Position</th>
-            <th>Games Played</th>
-            <th>Goals</th>
-            <th>Assists</th>
-            <th>Points</th>
-            <th>+/-</th>
-            <th>Shots</th>
-            <th>Shot %</th>
-            <th>Shifts</th>
-            <th>TOI/G</th>
-            <th>Blocked Shots</th>
-            <th>Hits</th>
-            <th>PIM</th>
-            <th>SHG</th>
-            <th>SHP</th>
-            <th>SHTOI</th>
-            <th>PPG</th>
-            <th>PPP</th>
-            <th>PPTOI</th>
-            <th>GWG</th>
+            {getHeaders(PLAYER_CONSTANTS)}
           </tr>
     } else {
       return <tr id={'PlayerStatsTable-headers'}>
-            <th>Ranking</th>
-            <th>Player Name</th>
-            <th>Position</th>
-            <th>Games Played</th>
-            <th>Started</th>
-            <th>Record</th>
-            <th>Shots</th>
-            <th>Saves</th>
-            <th>Save %</th>
-            <th>Shutouts</th>
-            <th>GA</th>
-            <th>GAA</th>
-            <th>ESH</th>
-            <th>ESA</th>
-            <th>ESA%</th>
-            <th>PPSH</th>
-            <th>PPSA</th>
-            <th>PPSA%</th>
-            <th>SHSH</th>
-            <th>SHSA</th>
-            <th>SHSA%</th>
-            <th>TOI</th>
-            <th>TOI/Game</th>
+            {getHeaders(GOALIE_CONSTANTS)}
           </tr>
     }
   }

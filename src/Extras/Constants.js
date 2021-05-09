@@ -11,4 +11,3 @@ export const SKATERS = 'skaters';
 export const GOALIES = 'goalies';
 
 export const GOALIE = 'g';
-
