@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Players.scss';
 import {BASE_LOCAL_API, GOALIE, GOALIES, SKATERS} from "../../Extras/Constants";
 import {Paginator} from "../Paginator/Paginator";
@@ -78,7 +78,7 @@ const Players = () => {
 
   function getHeaders(headersObject){
     return Object.keys(headersObject).map((headerName, index) => {
-      return <th key={index} onClick={() => sortPlayerHeader(headersObject[headerName])}>{headersObject[headerName].description}</th>
+      return <th key={index} className={headerName === tableFilter['header'] ? 'selected-header' : 'non-selected-header'} onClick={() => sortPlayerHeader(headersObject[headerName])}>{headersObject[headerName].description}</th>
     })
   }
 
